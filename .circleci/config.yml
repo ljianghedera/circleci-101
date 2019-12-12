@@ -6,18 +6,25 @@ jobs:
     steps:
       - checkout
       - run: echo "A first hello"
-      - run: sleep 25
+      - run: sleep 35
   two:
     docker:
       - image: circleci/ruby:2.4.1
     steps:
       - checkout
       - run: echo "A texan's howdy"
-      - run: sleep 15
- 
+      - run: sleep 35
+  three:
+    docker:
+      - image: circleci/ruby:2.4.1
+    steps:
+      - checkout
+      - run: echo "A familar hi"
+      - run: sleep 35 
 workflows:
   version: 2
-  one_and_two:
+  one_to_two:
     jobs:
       - one
       - two
+      - three
