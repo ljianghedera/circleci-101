@@ -49,5 +49,5 @@ workflows:
          requires: 
            - one
       - three:
-        requires:
+         requires:
            - one
