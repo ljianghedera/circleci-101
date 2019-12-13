@@ -26,12 +26,27 @@ jobs:
           else
             echo "Nope!" ; exit 1
           fi
+  three:
+    docker:
+      - image: circleci/ruby:2.4.1
+    steps:
+      - checkout
+      - run: echo "A Hello from Hedera"
+      - attach_workspace:
+          at: my_workspace
+      - run: |
+          if [[ $(cat my_workspace/echo-output) == "Trying out workspace" ]]; then
+            echo "It workded!";
+          else
+            echo "Nope!" ; exit 1
+          fi
 workflows:
   version: 2
-  one_to_two:
+  one_to_three:
     jobs:
       - one
       - two:
          requires: 
            - one
+      - three
       
