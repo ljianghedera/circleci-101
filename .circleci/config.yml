@@ -52,6 +52,13 @@ workflows:
          requires:
            - one
   one_to_two:
+    triggers:
+      - schedule:
+          cron: "0 3 * * *"
+          filters:
+            branches:
+              only:
+                - devBlocked
     jobs:
       - one
       - two:
