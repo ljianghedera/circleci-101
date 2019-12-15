@@ -51,3 +51,9 @@ workflows:
       - three:
          requires:
            - one
+  one_to_two:
+    jobs:
+      - one
+      - two:
+         requires: 
+           - one
